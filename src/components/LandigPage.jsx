@@ -2,7 +2,7 @@ import React from 'react'
 
 function LandigPage() {
   return (
-    <div>LandigPage</div>
+    <div className='h-[100vh]'>LandigPage</div>
   )
 }
 
