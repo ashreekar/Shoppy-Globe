@@ -3,16 +3,17 @@ import { useFetch } from '../../utils/useFetch';
 import {ProductItem} from '../index.js'
 
 function ProductList() {
-    const url = "http://localhost:3000/products";
+    const url = "https://dummyjson.com/products";
     // actual url
     // https://dummyjson.com/products'
+    // "http://localhost:3000/products"
     const [fetcheddata, setfetcheddata] = useState([]);
 
     const { data, err, loading } = useFetch(url);
 
     useEffect(() => {
         if (data) {
-            setfetcheddata(data);
+            setfetcheddata(data.products);
         }
     }, [data])
 
@@ -34,7 +35,7 @@ function ProductList() {
     }
 
     return (
-        <div className='flex flex-wrap gap-6 items-center justify-center mt-16'>
+        <div className='flex flex-wrap gap-6 items-center justify-center mt-16 pl-10 pr-10'>
             {
                 fetcheddata.map((item) => {
                     return <ProductItem key={item.id} item={item} />

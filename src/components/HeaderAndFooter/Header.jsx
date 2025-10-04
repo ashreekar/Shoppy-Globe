@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 function Header() {
+  
   return (
     <div className='flex w-auto justify-between h-16 items-center px-3 py-2 mx-7 my-2.5 rounded-xl bg-blend-saturation shadow-xl duration-300 backdrop-blur-filter backdrop-blur-xl backdrop-saturate-200 transition-shadow bg-opacity-90 bg-wash lg:pe-5 lg:ps-4 shadow-nav sticky top-2.5 z-50 '>
       <NavLink to={'/'}>
