@@ -28,8 +28,8 @@ function ProductList() {
 
     if (loading) {
         return (
-            <div className='flex items-center justify-center'>
-                <p className='text-3xl animate-ping transition duration-150'>Loading....</p>
+            <div className='flex items-center justify-center h-[75vh]'>
+                <p className='text-3xl animate-ping transition duration-150 text-gray-700 font-medium'>Loading....</p>
             </div>
         )
     }
