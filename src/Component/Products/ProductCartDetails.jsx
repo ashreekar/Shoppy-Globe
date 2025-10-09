@@ -37,7 +37,7 @@ function ProductCartDetails({ product }) {
         <div>
             <button className={`px-5 me-2 mb-2 mt-1 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 cursor-pointer py-2.5 focus:ring-1 focus:ring-blue-200"} ${quantity === 0 ? "block" : "hidden"}`} onClick={addFirstProductCart}>Add to cart</button>
 
-            <IncreDecreCounter quantity={quantity} addOneCart={addOneCart} deleteOneCart={deleteOneCart} />
+            <IncreDecreCounter quantity={quantity} addOneCart={addOneCart} deleteOneCart={deleteOneCart} view={true} />
         </div>
     )
 }

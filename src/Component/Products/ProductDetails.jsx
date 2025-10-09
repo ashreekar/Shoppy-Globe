@@ -29,14 +29,14 @@ function ProductDetails() {
   }
 
   return (
-    <div className="flex gap-3 w-[100%] justify-evenly items-center">
+    <div className="flex gap-3 w-[100%] justify-evenly items-center h-[75vh]">
       <div className="rounded-lg shadow-2xl h-[90%]">
         <img src={data.images[0]} alt={data.title} onError={(e) => {
           e.target.src = "/logo.png"
         }} height="250px" width="250px" />
       </div>
 
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3 w-[45vw]">
         <h2 className="font-bold text-2xl">{data.title}</h2>
         <p className="text-gray-600 font-medium">from <span className="text-blue-700 font-medium">{data.brand}</span></p>
 
