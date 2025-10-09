@@ -1,8 +1,14 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
+import { Header, Footer } from './Component'
 
 function App() {
   return (
-    <div className='bg-green-50'>App</div>
+    <>
+      <Header/>
+      <Outlet/>
+      <Footer/>
+    </>
   )
 }
 
