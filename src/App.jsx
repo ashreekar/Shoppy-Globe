@@ -1,13 +1,15 @@
 import { Outlet } from 'react-router-dom'
 import { Header, Footer } from './Component'
+import { Provider } from 'react-redux'
+import shopStore from "./stateUtils/shopStore.js"
 
 function App() {
   return (
-    <>
-      <Header/>
-      <Outlet/>
-      <Footer/>
-    </>
+    <Provider store={shopStore}>
+      <Header />
+      <Outlet />
+      <Footer />
+    </Provider>
   )
 }
 
