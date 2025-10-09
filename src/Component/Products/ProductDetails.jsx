@@ -44,7 +44,7 @@ function ProductDetails() {
           {
             data.tags.map((tag, idex) => {
               return (
-                <p className="bg-blue-800 rounded-2xl text-white font-bold py-1 px-2">
+                <p className="bg-blue-800 rounded-2xl text-white font-bold py-1 px-2" key={tag}>
                   {tag}
                 </p>
               )
@@ -69,7 +69,7 @@ function ProductDetails() {
             {
               data.description.split(".").map((sent)=>{
                 return (
-                  <li>{sent}</li>
+                  <li key={sent}>{sent}</li>
                 )
               })
             }
@@ -80,7 +80,7 @@ function ProductDetails() {
       </div>
 
       <div>
-        <ProductCartDetails id={data.id} />
+        <ProductCartDetails product={data} />
       </div>
     </div>
   )
