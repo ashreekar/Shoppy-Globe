@@ -7,6 +7,11 @@ import ProductItem from "./Products/ProductItem";
 import ProductList from "./Products/ProductList";
 import CheckoutPage from "../Pages/Checkout/CheckoutPage";
 import LandingPage from "../Pages/Landing/LandingPage";
+import IncreDecreCounter from "./counter/IncreDecreCounter";
+import MainProduct from "../Pages/Product/MainProduct";
+import SearchBar from "./Products/SearchBar";
+import Loading from "./LoadAndError/Loading";
+import ErrorFetch from "./LoadAndError/ErrorFetch";
 
 export {
     Cart,
@@ -17,5 +22,10 @@ export {
     ProductItem,
     ProductList,
     CheckoutPage,
-    LandingPage
+    LandingPage,
+    SearchBar,
+    IncreDecreCounter,
+    MainProduct,
+    Loading,
+    ErrorFetch
 };

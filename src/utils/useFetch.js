@@ -1,18 +1,18 @@
-import {useState,useEffect} from "react"
+import { useState, useEffect } from "react"
 
-const useFetch=(url)=>{
+const useFetch = (url) => {
     const [data, setdata] = useState(null);
     const [error, seterror] = useState(null);
-    const [loading,setLoading]=useState(false);
+    const [loading, setLoading] = useState(false);
 
-    useEffect(()=>{
-        async function callApi(){
+    useEffect(() => {
+        async function callApi() {
             try {
                 setLoading(true);
-                const response=await fetch(url);
-                const data=await response.json();
-    
-                if(data){
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (data) {
                     setdata(data);
                 }
             } catch (error) {
@@ -23,9 +23,9 @@ const useFetch=(url)=>{
         }
 
         callApi();
-    },[url]);
+    }, [url]);
 
-    return {data,error,loading};
+    return { data, error, loading };
 }
 
-export {useFetch};
+export { useFetch };

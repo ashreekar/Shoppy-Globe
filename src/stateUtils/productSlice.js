@@ -8,7 +8,7 @@ const productSlice=createSlice({
     reducers:{
         addProduct:(state,action)=>{
             state.products=[]; // making sure state is empty
-
+            // console.log(action.payload)
             action.payload.forEach(ele => {
                 state.products.push({...ele,cartQuantity:0});
                 // already intialising cart quantity helps to render 0 
