@@ -30,10 +30,10 @@ function ProductDetails() {
 
   return (
     <div className="flex gap-3 w-[100%] justify-evenly items-center h-[75vh]">
-      <div className="rounded-lg shadow-2xl h-[90%]">
+      <div className="rounded-lg shadow-2xl h-[90%] justify-center">
         <img src={data.images[0]} alt={data.title} onError={(e) => {
           e.target.src = "/logo.png"
-        }} height="250px" width="250px" />
+        }} height="250px" width="250px" className="h-full object-fit rounded-t-xl" />
       </div>
 
       <div className="flex flex-col gap-3 w-[45vw]">
