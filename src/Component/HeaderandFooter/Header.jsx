@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
 function Header() {
-  let cartQunatity=useSelector(state=>state.cart.cart);
+  let cartQunatity=useSelector(state=>state.cart.quantity);
 
   return (
     <div className='flex w-auto justify-between h-16 items-center px-3 py-2 mx-7 my-2.5 rounded-xl bg-blend-saturation shadow-xl duration-300 backdrop-blur-filter backdrop-blur-xl backdrop-saturate-200 transition-shadow bg-opacity-90 bg-wash lg:pe-5 lg:ps-4 shadow-nav sticky top-2.5 z-50 '>
@@ -32,7 +32,7 @@ function Header() {
               <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 10V6a3 3 0 0 1 3-3v0a3 3 0 0 1 3 3v4m3-2 .917 11.923A1 1 0 0 1 17.92 21H6.08a1 1 0 0 1-.997-1.077L6 8h12Z" />
             </svg>
 
-            <p className='text-md font-medium'>{cartQunatity || 0}</p>
+            <p className='text-md font-medium'>{cartQunatity}</p>
           </div>
         </NavLink>
       </div>
