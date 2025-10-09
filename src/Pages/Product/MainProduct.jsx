@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { addProduct } from "../../stateUtils/productSlice.js";
 
 function MainProduct() {
-    const url = "http://localhost:3000/products"
+    const url = "http://localhost:3000/products";
     const { data, error, loading } = useFetch(url);
 
     const [renderProducts, setRenderProducts] = useState(data);
