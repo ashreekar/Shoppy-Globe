@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { SearchBar, ProductList, Loading, ErrorFetch } from "../../Component"
 import { useFetch } from "../../utils/useFetch.js";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { addProduct } from "../../stateUtils/productSlice.js";
 
 function MainProduct() {
     const url = "http://localhost:3000/products";
     const { data, error, loading } = useFetch(url);
+
+    const cost=useSelector(state=>state.cart.cost);
 
     const [renderProducts, setRenderProducts] = useState(data);
 
@@ -45,6 +47,10 @@ function MainProduct() {
     return (
         <>
             <SearchBar renderingDataChanges={renderingDataChanges} />
+             <div className='flex justify-between'>
+                <p className='text-md text-gray-700 mt-2 pl-10'>Showing <span className='font-bold'>{renderProducts.length}</span> results</p>
+                <p className='text-md text-gray-700 mt-2 pr-10'>Your total cart cost: <span className='font-bold'>{cost.toFixed(2)}</span> </p>
+            </div>
             <ProductList renderProducts={renderProducts} />
         </>
     )

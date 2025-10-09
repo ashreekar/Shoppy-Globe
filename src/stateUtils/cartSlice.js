@@ -31,13 +31,13 @@ const cartSlice = createSlice({
             state.quantity -= product.cartQuantity;
             state.cost -= product.price * product.cartQuantity;
 
-            if (state.cart.length === 0) {
-                state.cost = 0;
-            }
-
             state.cart = state.cart.filter((item) => {
                 return item.id !== product.id;
             })
+
+            if (state.cart.length === 0) {
+                state.cost = 0;
+            }
         },
         removeByOne: (state, actions) => {
             const product = state.cart.find((item) => {
