@@ -12,6 +12,7 @@ import MainProduct from "../Pages/Product/MainProduct";
 import SearchBar from "./Products/SearchBar";
 import Loading from "./LoadAndError/Loading";
 import ErrorFetch from "./LoadAndError/ErrorFetch";
+import ProductCartDetails from "./Products/ProductCartDetails";
 
 export {
     Cart,
@@ -27,5 +28,6 @@ export {
     IncreDecreCounter,
     MainProduct,
     Loading,
-    ErrorFetch
+    ErrorFetch,
+    ProductCartDetails
 };
