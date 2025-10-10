@@ -6,10 +6,11 @@ function SearchBar({ renderingDataChanges }) {
   const [searchValue, setsearchValue] = useState("");
 
   function searchAndReturnProducts() {
+    console.log(searchValue)
     const toSet = products.filter((item) => {
       return item.title.includes(searchValue);
     })
-
+    console.log(toSet)
     renderingDataChanges(toSet);
   }
 

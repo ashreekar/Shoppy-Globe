@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { CartItem } from "../index.js"
+import CartItem from "./CartItem.jsx"
 import { NavLink } from 'react-router-dom';
 import { emptyCart } from '../../stateUtils/cartSlice.js';
 import { useEffect, useState } from 'react';

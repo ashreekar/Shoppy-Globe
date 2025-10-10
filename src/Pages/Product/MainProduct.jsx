@@ -1,6 +1,7 @@
 import { lazy, useEffect, useState } from "react";
-// import { SearchBar, ProductList, Loading, ErrorFetch } from "../../Component"
-import {SearchBar, Loading, ProductList} from "../../Component"
+import SearchBar from "../../Component/Products/SearchBar.jsx"
+import ProductList from "../../Component/Products/ProductList.jsx"
+import Loading from "../../Component/LoadAndError/Loading.jsx"
 import { useFetch } from "../../utils/useFetch.js";
 import { useDispatch,useSelector } from "react-redux";
 import { addProduct } from "../../stateUtils/productSlice.js";
@@ -29,9 +30,12 @@ function MainProduct() {
     }, [data])
 
     function renderingDataChanges(val){
-        if(val.length === 0){
+        if(val===""){
             setRenderProducts(data);
-        }else{
+        }else if(val.length===0){
+            setRenderProducts([]);
+        }
+        else{
             setRenderProducts(val);
         }
     }
@@ -54,7 +58,9 @@ function MainProduct() {
                 <p className='text-md text-gray-700 mt-2 pl-10'>Showing <span className='font-bold'>{renderProducts.length}</span> results</p>
                 <p className='text-md text-gray-700 mt-2 pr-10'>Your total cart cost: <span className='font-bold'>{cost.toFixed(2)}</span> </p>
             </div>
-            <ProductList renderProducts={renderProducts} />
+            {
+                renderProducts.length===0?<div className="h-[70vh] flex items-center justify-center"><p className="text-2xl font-bold text-gray-700">Product you are looking for is not found</p></div>:<ProductList renderProducts={renderProducts} />
+            }
         </>
     )
 }

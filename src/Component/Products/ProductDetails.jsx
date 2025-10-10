@@ -1,9 +1,10 @@
 import { useParams } from "react-router-dom"
 import { useFetch } from "../../utils/useFetch";
-import { Loading, ErrorFetch } from "../"
+import ErrorFetch from "../LoadAndError/ErrorFetch"
+import Loading from "../LoadAndError/Loading"
 import { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
-import { ProductCartDetails } from "../";
+import ProductCartDetails from "./ProductCartDetails";
 
 function ProductDetails() {
   const param = useParams();

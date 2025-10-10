@@ -3,8 +3,8 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-// import { Cart, ProductDetails, MainProduct, CheckoutPage, LandingPage } from './Component'
-import { Loading,LandingPage } from './Component/index.js'
+import Loading from "./Component/LoadAndError/Loading.jsx"
+import LandingPage from "./Pages/Landing/LandingPage.jsx"
 
 const Cart=lazy(()=>import("./Component/Cart/Cart.jsx"));
 const ProductDetails=lazy(()=>import("./Component/Products/ProductDetails.jsx"));

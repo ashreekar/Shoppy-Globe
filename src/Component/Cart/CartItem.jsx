@@ -1,4 +1,4 @@
-import { IncreDecreCounter } from "../index.js"
+import IncreDecreCounter from "../counter/IncreDecreCounter.jsx"
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { addByOne, removeByOne, removeCompletly } from "../../stateUtils/cartSlice.js";

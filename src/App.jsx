@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom'
-import { Header, Footer } from './Component'
+import Header from "./Component/HeaderandFooter/Header.jsx"
+import Footer from "./Component/HeaderandFooter/Footer.jsx"
 import { Provider } from 'react-redux'
 import shopStore from "./stateUtils/shopStore.js"
 
