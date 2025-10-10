@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
-import { SearchBar, ProductList, Loading, ErrorFetch } from "../../Component"
+import { lazy, useEffect, useState } from "react";
+// import { SearchBar, ProductList, Loading, ErrorFetch } from "../../Component"
+import {SearchBar, Loading, ProductList} from "../../Component"
 import { useFetch } from "../../utils/useFetch.js";
 import { useDispatch,useSelector } from "react-redux";
 import { addProduct } from "../../stateUtils/productSlice.js";
+
+const ErrorFetch=lazy(()=>import("../../Component/LoadAndError/ErrorFetch.jsx"));
 
 function MainProduct() {
     const url = "http://localhost:3000/products";

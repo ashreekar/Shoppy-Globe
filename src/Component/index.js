@@ -31,3 +31,20 @@ export {
     ErrorFetch,
     ProductCartDetails
 };
+// export {
+//     Cart,
+//     CartItem,
+//     Footer,
+//     Header,
+//     ProductDetails,
+//     ProductItem,
+//     ProductList,
+//     CheckoutPage,
+//     LandingPage,
+//     SearchBar,
+//     IncreDecreCounter,
+//     MainProduct,
+//     Loading,
+//     ErrorFetch,
+//     ProductCartDetails
+// };
