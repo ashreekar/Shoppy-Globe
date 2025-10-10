@@ -16,13 +16,16 @@ function Cart() {
   }, [cartFetched, cost])
 
   const removeCart = () => {
-    dispatch(emptyCart(product));
+    dispatch(emptyCart(cart));
   }
 
   if (cart.length === 0) {
     return (
-      <div className='h-[75vh] font-bold text-2xl text-gray-600 flex items-center justify-center'>
-        <p>Your cart is empty</p>
+      <div className="flex flex-col items-center gap-4 justify-center h-[70vh]">
+        <p className="text-2xl font-bold text-gray-600">Your cart is empty</p>
+        <NavLink to={'/products'}>
+          <button className="px-3 py-2 rounded-xl bg-blue-700 cursor-pointer hover:bg-blue-600 border-none outline-none text-white font-bold">Go shop now</button>
+        </NavLink>
       </div>
     )
   }

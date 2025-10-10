@@ -1,14 +1,34 @@
 import { useSelector, useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import { emptyCart } from "../../stateUtils/cartSlice";
 
 function CheckoutPage() {
   const cart=useSelector(state=>state.cart.cart);
   const cost=useSelector(state=>state.cart.cost);
+  const dispatch=useDispatch();
+
+  const [name, setname] = useState("");
+  const [email, setemail] = useState("");
+  const [adress,setAdress]=useState("");
+  const [phone,setPhone]=useState("");
+  const [pin,setPin]=useState("");
+  const [city,setcity]=useState("");
+  const [state,setState]=useState("");
+  const [method,setMethod]=useState("cod");
+
+  const checkoutHandler=()=>{
+      dispatch(emptyCart(cart));
+  }
+
 
   if(cart.length===0){
     return (
-      <div>
-        <p>Your cart is empty</p>
-        <button>Go shop now</button>
+      <div className="flex flex-col items-center gap-4 justify-center h-[70vh]">
+        <p className="text-2xl font-bold text-gray-600">Your cart is empty</p>
+        <NavLink to={'/products'}>
+          <button className="px-3 py-2 rounded-xl bg-blue-700 cursor-pointer hover:bg-blue-600 border-none outline-none text-white font-bold">Go shop now</button>
+        </NavLink>
       </div>
     )
   }
@@ -30,12 +50,18 @@ function CheckoutPage() {
             <form className="space-y-2">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
                 <input
+                value={name}
+                required
+                onChange={(e)=>setname(e.target.value)}
                   type="text"
                   name="name"
                   placeholder="Full Name"
                   className="p-2 border rounded-lg w-full focus:ring focus:ring-blue-200"
                 />
                 <input
+                required
+                value={email}
+                onChange={(e)=>setname(e.target.value)}
                   type="email"
                   name="email"
                   placeholder="Email Address"
@@ -44,6 +70,9 @@ function CheckoutPage() {
               </div>
 
               <input
+              required
+              value={phone}
+              onChange={(e)=>setname(e.target.value)}
                 type="text"
                 name="phone"
                 placeholder="Phone Number"
@@ -51,6 +80,9 @@ function CheckoutPage() {
               />
 
               <textarea
+              required
+              value={adress}
+              onChange={(e)=>setname(e.target.value)}
                 name="address"
                 placeholder="Adress line 1"
                 rows="1"
@@ -59,18 +91,26 @@ function CheckoutPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                 <input
+                value={city}
+                onChange={(e)=>setname(e.target.value)}
                   type="text"
                   name="city"
                   placeholder="City"
                   className="p-2 border rounded-lg w-full focus:ring focus:ring-blue-200"
                 />
                 <input
+                required
+                value={state}
+                onChange={(e)=>setname(e.target.value)}
                   type="text"
                   name="state"
                   placeholder="State"
                   className="p-2 border rounded-lg w-full focus:ring focus:ring-blue-200"
                 />
                 <input
+                required
+                value={pin}
+                onChange={(e)=>setname(e.target.value)}
                   type="text"
                   name="pincode"
                   placeholder="Pincode"
@@ -92,7 +132,8 @@ function CheckoutPage() {
 
               <button
                 type="button"
-                className="w-full py-1 mt-4 text-white bg-blue-600 hover:bg-blue-700 rounded-xl"
+                onClick={checkoutHandler}
+                className="w-26 cursor-pointer font-bold py-1 mt-4 text-white bg-blue-600 hover:bg-blue-700 rounded-xl"
               >
                 Place Order
               </button>
