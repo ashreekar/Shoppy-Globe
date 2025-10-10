@@ -29,8 +29,8 @@ function ProductDetails() {
   }
 
   return (
-    <div className="flex gap-3 w-[100%] justify-evenly items-center h-[75vh]">
-      <div className="rounded-lg shadow-2xl h-[90%] justify-center">
+    <div className="flex flex-col lg:flex-row gap-10 w-full justify-evenly items-center min-h-[80vh] px-8 py-10 bg-gray-50 rounded-lg shadow-xl">
+      <div className="flex justify-center items-center bg-white rounded-2xl shadow-lg border border-gray-100 p-4 w-[300px] h-[300px]">
         <img src={data.images[0]} alt={data.title} onError={(e) => {
           e.target.src = "/logo.png"
         }} height="250px" width="250px" className="h-full object-fit rounded-t-xl" />
@@ -40,11 +40,11 @@ function ProductDetails() {
         <h2 className="font-bold text-2xl">{data.title}</h2>
         <p className="text-gray-600 font-medium">from <span className="text-blue-700 font-medium">{data.brand}</span></p>
 
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-2 mt-2">
           {
             data.tags.map((tag, idex) => {
               return (
-                <p className="bg-blue-800 rounded-2xl text-white font-bold py-1 px-2" key={tag}>
+                <p className="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full border border-blue-300" key={tag}>
                   {tag}
                 </p>
               )
@@ -57,26 +57,31 @@ function ProductDetails() {
           <span className="text-white text-sm font-medium">{data.rating}</span>
         </div>
 
-      <div className='text-lg font-medium flex text-center flex-row items-center gap-4 mt-2'>
-        <p className='text-black text-xl'>$ {data.price}</p>
-        <p className='text-gray-500 line-through text-medium'>{(data.discountPercentage + data.price).toFixed(2)}</p>
-      </div>
-      <div>
-
-        <div>
-          <h3 className="font-bold text-lg">Description:</h3>
-          <ul className="font-medium text-justify">
-            {
-              data.description.split(".").map((sent)=>{
-                return (
-                  <li key={sent}>{sent}</li>
-                )
-              })
-            }
-          </ul>
+        <div className='text-lg font-medium flex text-center flex-row items-center gap-4 mt-2'>
+          <p className="text-2xl font-semibold text-gray-900">$ {data.price}</p>
+          <p className="text-gray-400 line-through text-lg">
+            ${(data.price + data.discountPercentage).toFixed(2)}
+          </p>
+          <p className="text-green-600 font-medium text-sm">
+            Save {data.discountPercentage}% today!
+          </p>
         </div>
+        <div>
 
-      </div>
+          <div>
+            <h3 className="font-bold text-lg">Description:</h3>
+            <ul className="list-disc pl-6 text-gray-700 leading-relaxed">
+              {
+                data.description.split(".").filter((sent) => sent.trim().length > 0).map((sent) => {
+                  return (
+                    <li key={sent}>{sent}</li>
+                  )
+                })
+              }
+            </ul>
+          </div>
+
+        </div>
       </div>
 
       <div>
