@@ -10,11 +10,13 @@ const Cart=lazy(()=>import("./Component/Cart/Cart.jsx"));
 const ProductDetails=lazy(()=>import("./Component/Products/ProductDetails.jsx"));
 const MainProduct=lazy(()=>import("./Pages/Product/MainProduct.jsx"));
 const CheckoutPage=lazy(()=>import("./Pages/Checkout/CheckoutPage.jsx"));
+import NotFound from './Component/404/NotFound.jsx'
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement:<NotFound/>,
     children: [
       {
         path: "/",
