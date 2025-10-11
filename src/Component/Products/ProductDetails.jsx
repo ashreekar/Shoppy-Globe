@@ -59,9 +59,9 @@ function ProductDetails() {
         </div>
 
         <div className='text-lg font-medium flex text-center flex-row items-center gap-4 mt-2'>
-          <p className="text-2xl font-semibold text-gray-900">$ {data.price}</p>
+          <p className="text-2xl font-semibold text-gray-900">$ {(data.price*(1-(data.discountPercentage/100))).toFixed(2)}</p>
           <p className="text-gray-400 line-through text-lg">
-            ${(data.price + data.discountPercentage).toFixed(2)}
+            ${(data.price).toFixed(2)}
           </p>
           <p className="text-green-600 font-medium text-sm">
             Save {data.discountPercentage}% today!

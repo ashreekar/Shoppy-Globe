@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const disCountedPrice=(price=0,percentage=0)=>{
+    const discPrice=price*(1-(percentage/100));
+    return Number(discPrice.toFixed(2));
+}
+
 const cartSlice = createSlice({
     name: "Cart",
     initialState: {
@@ -9,9 +14,11 @@ const cartSlice = createSlice({
     },
     reducers: {
         addFirst: (state, actions) => {
+            const discount=disCountedPrice(actions.payload.price,actions.payload.discountPercentage);
             state.quantity += 1;
-            state.cost += actions.payload.price;
-            state.cart.push({ ...actions.payload, cartQuantity: 1 });
+            // push discounted price
+            state.cost += discount;
+            state.cart.push({ ...actions.payload, cartQuantity: 1, actualPrice:discount });
         },
         emptyCart: (state, _) => {
             // for all products
@@ -24,12 +31,13 @@ const cartSlice = createSlice({
             // findi it first
             // can happen 2 type one is when there is 1 item 
             // 2nd is when removed from cart page
+            //  const discount=disCountedPrice(actions.payload.price,actions.payload.discountPercentage);
             const product = state.cart.find((item) => {
                 return item.id === actions.payload.id;
             })
 
             state.quantity -= product.cartQuantity;
-            state.cost -= product.price * product.cartQuantity;
+            state.cost -= product.actualPrice * product.cartQuantity;
 
             state.cart = state.cart.filter((item) => {
                 return item.id !== product.id;
@@ -46,7 +54,7 @@ const cartSlice = createSlice({
 
             product.cartQuantity -= 1;
             state.quantity -= 1;
-            state.cost -= product.price;
+            state.cost -= product.actualPrice;
         },
         addByOne: (state, actions) => {
             const product = state.cart.find((item) => {
@@ -55,7 +63,7 @@ const cartSlice = createSlice({
 
             product.cartQuantity += 1;
             state.quantity += 1;
-            state.cost += product.price;
+            state.cost += product.actualPrice;
         }
     }
 })

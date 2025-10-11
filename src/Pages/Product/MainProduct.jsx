@@ -5,12 +5,13 @@ import Loading from "../../Component/LoadAndError/Loading.jsx"
 import { useFetch } from "../../utils/useFetch.js";
 import { useDispatch,useSelector } from "react-redux";
 import { addProduct } from "../../stateUtils/productSlice.js";
+import NotFound from "../../Component/404/NotFound.jsx"
 
 const ErrorFetch=lazy(()=>import("../../Component/LoadAndError/ErrorFetch.jsx"));
 
 function MainProduct() {
     const url = "http://localhost:3000/products";
-    const { data, error, loading } = useFetch(url);
+    const { data, error, loading, notFound } = useFetch(url);
 
     const cost=useSelector(state=>state.cart.cost);
 
@@ -45,6 +46,10 @@ function MainProduct() {
 
     if (loading) {
         return <Loading />
+    }
+
+      if(notFound){
+        return <NotFound/>
     }
 
     if (error) {

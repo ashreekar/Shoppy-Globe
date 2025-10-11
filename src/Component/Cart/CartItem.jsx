@@ -43,9 +43,9 @@ function CartItem({ product }) {
         <h3 className="text-2xl font-semibold text-gray-800 mb-2">{product.title}</h3>
 
         <div className='flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-gray-700'>
-          <p className='text-lg text-gray-500 font-medium'>Price:<span className="text-gray-900 font-semibold">$ {product.price}</span></p>
+          <p className='text-lg text-gray-500 font-medium'>Price:<span className="text-gray-900 font-semibold">$ {product.actualPrice}</span></p>
           <p className='text-lg'>
-            <span className="text-black font-bold">To pay: {(product.cartQuantity * product.price).toFixed(2)}</span>
+            <span className="text-black font-bold">To pay: {(product.cartQuantity * product.actualPrice).toFixed(2)}</span>
             {" "}
             <span className="text-sm text-gray-500 ml-1"> for {product.cartQuantity} pieces</span>
           </p>
