@@ -4,21 +4,22 @@ const useFetch = (url) => {
     const [data, setdata] = useState(null);
     const [error, seterror] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [notFound, setNotFound] = useState(false);
 
     useEffect(() => {
+        let isMounted=true;
         async function callApi() {
             try {
                 setLoading(true);
                 const response = await fetch(url);
+               
                 const data = await response.json();
 
-                if (response.status === 200 && data) {
+                if (data) {
                     setdata(data);
                 }
-                if(response.status===404){
-                    setNotFound(true);
-                }
+
+                if (!isMounted) return;
+
             } catch (error) {
                 seterror(error);
             } finally {
@@ -27,9 +28,13 @@ const useFetch = (url) => {
         }
 
         callApi();
+
+        return ()=>{
+            isMounted=false;
+        }
     }, [url]);
 
-    return { data, error, loading, notFound };
+    return { data, error, loading };
 }
 
 export { useFetch };

@@ -1,8 +1,4 @@
-import { useDispatch, useSelector } from "react-redux"
-import IncreDecreCounter from "../../../Component/counter/IncreDecreCounter"
 import { NavLink } from "react-router-dom";
-import { addFirst, removeCompletly, removeByOne, addByOne } from "../../../stateUtils/cartSlice.js";
-import { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 
 function ProductCard({ product, aspect }) {

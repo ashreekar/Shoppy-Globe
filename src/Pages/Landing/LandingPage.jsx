@@ -5,12 +5,12 @@ import TopRated from './Featured/TopRated';
 import { useFetch } from "../../utils/useFetch.js"
 
 function LandigPage() {
-  const { data, error, loading } = useFetch("http://localhost:3000/products");
+  const { data, error, loading } = useFetch("https://dummyjson.com/products");
 
   return (
     <div className='min-h-screen flex flex-col items-center p-4 relative'>
 
-      <div className='relative z-10 flex flex-col gap-8 items-center text-center max-w-4xl w-full'>
+      <div className='relative z-10 flex flex-col gap-8 items-center text-center max-w-4xl w-[100%]'>
 
         <div className='flex flex-col gap-2 items-center text-center'>
           <h2 className='font-extrabold text-4xl md:text-5xl text-gray-900 leading-tight'>
@@ -22,13 +22,14 @@ function LandigPage() {
         </div>
 
       </div>
-
-      <div className={loading || error ? 'hidden' : 'flex flex-col mt-7'}>
-        <Discounted data={data} />
-        <TopRated data={data} />
+{
+  !(loading || error) && <div className={'flex flex-col mt-7 items-center w-[100%]'}>
+        <Discounted data={data.products} />
+        <TopRated data={data.products} />
       </div>
+}
 
-       <div className='flex flex-col sm:flex-row gap-4 items-center mt-12'>
+       <div className='flex flex-col sm:flex-row gap-4 justify-center items-center mt-12 w-[100%]'>
 
           <NavLink to={"/products"}>
             <button

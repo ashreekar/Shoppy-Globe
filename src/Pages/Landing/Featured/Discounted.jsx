@@ -21,7 +21,7 @@ function Discounted({ data }) {
 
         {
           discounted.filter((item, index) => index < 5).map((item) => {
-            return <ProductCard product={item} aspect={"discount"} />
+            return <ProductCard key={item.id} product={item} aspect={"discount"} />
           })
         }
       </div>

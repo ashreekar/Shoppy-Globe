@@ -20,7 +20,7 @@ const [rated, setRated] = useState([]);
 
         {
           rated.filter((item, index) => index < 5).map((item) => {
-            return <ProductCard product={item} aspect={"rating"} />
+            return <ProductCard key={item.id} product={item} aspect={"rating"} />
           })
         }
       </div>

@@ -4,8 +4,10 @@ import { NavLink } from "react-router-dom"
 function NotFound() {
     return (
         <div className="flex flex-col gap-6 items-center justify-center mt-14">
-            <p className="text-2xl font-bold text-gray-700">Opps !</p>
-            <p className="text-lg font-medium text-gray-600">Page your searching for does not exists</p>
+            <p className="text-5xl font-bold text-gray-700">Oops !</p>
+            <p className="text-5xl font-bold text-gray-700">404</p>
+            <p className="text-5xl font-bold text-gray-700">Not Found</p>
+            <p className="text-lg font-medium text-gray-600">The page you're searching for does not exist</p>
             <p className="text-lg font-medium text-gray-600">Go back to home page</p>
             <div className="text-blue-800 animate-ping"><FaArrowAltCircleDown /></div>
             <NavLink to={'/'}>

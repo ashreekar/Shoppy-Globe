@@ -10,8 +10,9 @@ import NotFound from "../../Component/404/NotFound.jsx"
 const ErrorFetch=lazy(()=>import("../../Component/LoadAndError/ErrorFetch.jsx"));
 
 function MainProduct() {
-    const url = "http://localhost:3000/products";
-    const { data, error, loading, notFound } = useFetch(url);
+    const url = "https://dummyjson.com/products";
+    const { data, error, loading, notFound=false } = useFetch(url);
+    console.log(data)
 
     const cost=useSelector(state=>state.cart.cost);
 
@@ -21,9 +22,9 @@ function MainProduct() {
 
     useEffect(() => {
         // data is in my store as ProductSlice to use select in searchbar
-        if (data) {
-            setRenderProducts(data);
-            dispatch(addProduct(data));
+        if (data?.products) {
+            setRenderProducts(data.products);
+            dispatch(addProduct(data.products));
         } else {
             setRenderProducts([]);
             dispatch(addProduct([]));
@@ -32,7 +33,7 @@ function MainProduct() {
 
     function renderingDataChanges(val){
         if(val===""){
-            setRenderProducts(data);
+            setRenderProducts(data?.products || []);
         }else if(val.length===0){
             setRenderProducts([]);
         }

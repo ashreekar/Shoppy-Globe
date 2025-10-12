@@ -2,24 +2,14 @@ import { useParams } from "react-router-dom"
 import { useFetch } from "../../utils/useFetch";
 import ErrorFetch from "../LoadAndError/ErrorFetch"
 import Loading from "../LoadAndError/Loading"
-import { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import ProductCartDetails from "./ProductCartDetails";
 
 function ProductDetails() {
   const param = useParams();
-  const url = "http://localhost:3000/products"
+  const url = "https://dummyjson.com/products"
 
   const { data, error, loading } = useFetch(`${url}/${param.productid}`);
-
-  const [renderData, setRenderData] = useState({});
-
-  useEffect(() => {
-    if (data) {
-      setRenderData(data);
-    }
-    console.log(data);
-  }, [param, data])
 
   if (loading) {
     return <Loading />

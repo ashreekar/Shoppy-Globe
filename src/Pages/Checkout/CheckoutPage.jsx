@@ -60,7 +60,7 @@ function CheckoutPage() {
     setcity(savedForm.city || "");
     setState(savedForm.state || "");
     setMethod(savedForm.method || "cod");
-  }, [cart, cost]);
+  }, []);
 
 
   if (cart.length === 0 && !sucess) {
