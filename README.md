@@ -1,16 +1,103 @@
-# React + Vite
+```markdown
+# 🛒 Shoppy Globe
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Shoppy Globe is a modern e-commerce web application built using **React**, **Redux Toolkit**, **React Router**, and **TailwindCSS**. It provides a seamless shopping experience with product browsing, filtering, cart management, and checkout functionalities.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tech Stack
 
-## React Compiler
+| Technology      | Purpose |
+|----------------|---------|
+| React 19        | UI Components |
+| Redux Toolkit   | State Management |
+| React Router v7 | Routing & Navigation |
+| TailwindCSS     | Styling |
+| Vite            | Development & Bundling |
+| React Icons     | Icons Library |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 📁 Folder Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+
+shoppy-globe/
+├── public/
+├── src/
+│   ├── assets/              # Static assets (images, icons, etc.)
+│   ├── Component/           # Reusable UI components
+│   │   ├── Cart/
+│   │   ├── HeaderandFooter/
+│   │   ├── LoadAndError/
+│   │   ├── Products/
+│   │   └── counter/
+│   ├── pages/               # Page-level components
+│   │   ├── Landing/
+│   │   │   └── Featured/
+│   │   ├── Product/
+│   │   └── Checkout/
+│   ├── stateUtils/          # Redux Slices & Store
+│   ├── utils/               # Custom hooks & helpers
+│   ├── App.jsx              # Main App component
+│   ├── main.jsx             # Entry point
+│   └── index.css            # Global styles
+├── package.json
+├── vite.config.js
+└── README.md
+
+````
+
+---
+
+## 🧠 Features
+
+✅ Product Listing & Details  
+✅ Featured Sections (Top Rated / Discounted)  
+✅ Shopping Cart with Increment/Decrement  
+✅ Checkout Page  
+✅ Loading & Error States  
+✅ Responsive UI  
+
+---
+
+## 📦 Installation & Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/shoppy-globe.git
+cd shoppy-globe
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+````
+
+---
+
+## 🛠️ Available Scripts
+
+| Command           | Description              |
+| ----------------- | ------------------------ |
+| `npm run dev`     | Start development server |
+| `npm run build`   | Build for production     |
+| `npm run preview` | Preview production build |
+| `npm run lint`    | Run ESLint               |
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+Feel free to open a PR or suggest improvements.
+
+---
+
+## ✨ Author
+
+**Ashreek (DeVostro)**
+📧 Email: *[ashreekar767@gmail.com](mailto:ashreekar767@gmail.com)*
+
+---
