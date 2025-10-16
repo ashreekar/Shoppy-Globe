@@ -1,103 +1,118 @@
-```markdown
-# 🛒 Shoppy Globe
-
-Shoppy Globe is a modern e-commerce web application built using **React**, **Redux Toolkit**, **React Router**, and **TailwindCSS**. It provides a seamless shopping experience with product browsing, filtering, cart management, and checkout functionalities.
+# Book Store Application using React
 
 ---
 
-## 🚀 Tech Stack
+## 📝 GitHub Link
 
-| Technology      | Purpose |
-|----------------|---------|
-| React 19        | UI Components |
-| Redux Toolkit   | State Management |
-| React Router v7 | Routing & Navigation |
-| TailwindCSS     | Styling |
-| Vite            | Development & Bundling |
-| React Icons     | Icons Library |
+https://github.com/ashreekar/Shoppy-Globe
+---
+
+## 📌 Overview
+
+This is an **Ecommerce application frontend** built using **React (Vite)**.
+The app have fucntionality of:
+
+* Search for products
+* Can add products to cart
+* Can delete products from cart
+* Can delete whole cart itself
+* Can browse the top discounted/ top rated products
+* Error route handling
+* Can buy after filling a simple form
+
+It uses **functional components, useState, and redux-toolkit and  react-redux** to handle data flow and state management.
 
 ---
 
-## 📁 Folder Structure
+## ⚙️ Features
+
+* ✅ Created components like App, Header, ProductList, ProductItem, Car,CartItem,NotFound 
+* ✅ Created supporting pages and extra components
+* ✅ Created a dummy form for checkout and on checkout cart is cleared
+* ✅ Used props to pass data from parent ot child components 
+* ✅ Created a useFetch hook to call api and manage states, laoding and error parts
+* ✅ Included redux store and porduct and cart slice for better and efficient state management 
+* ✅ Added rounting features for checkout, home, cart, product pages and implemented dynamic routing for product details
+* ✅ Rendered ProductItem and cartItems as list and provided unique keys
+* ✅ Added lazy loading and suspence fallback for componets and images as well
+* ✅ Added a 404 Error page for handling unknown routes.
+* ✅ Clean and responsive UI
+
+---
+
+## 🏗️ Project Structure
 
 ```
-
-shoppy-globe/
+bookstore/
 ├── public/
 ├── src/
-│   ├── assets/              # Static assets (images, icons, etc.)
-│   ├── Component/           # Reusable UI components
-│   │   ├── Cart/
-│   │   ├── HeaderandFooter/
-│   │   ├── LoadAndError/
-│   │   ├── Products/
-│   │   └── counter/
-│   ├── pages/               # Page-level components
-│   │   ├── Landing/
-│   │   │   └── Featured/
-│   │   ├── Product/
-│   │   └── Checkout/
-│   ├── stateUtils/          # Redux Slices & Store
-│   ├── utils/               # Custom hooks & helpers
-│   ├── App.jsx              # Main App component
-│   ├── main.jsx             # Entry point
-│   └── index.css            # Global styles
+│   ├── components/
+│   │   ├── 404
+│   │   ├── Cart
+│   │   ├── counter
+│   │   ├── HeaderandFooter
+│   │   ├── LoadAndError
+│   │   ├── Products
+│   ├── pages/
+│   │   ├── Checkout
+│   │   ├── Lanidng
+│   │   ├── Product
+│   ├── utils/
+│   │   ├── useFetch.js
+│   ├── stateUtil/
+│   │   ├── cartSlice.js
+│   │   ├── productSlice.js
+│   │   ├── shopStore.js
+│   ├── App.jsx
+│   ├── main.jsx
+│   ├── index.css
 ├── package.json
+├── index.html
 ├── vite.config.js
-└── README.md
-
-````
+```
 
 ---
 
-## 🧠 Features
+## 🚀 Getting Started
 
-✅ Product Listing & Details  
-✅ Featured Sections (Top Rated / Discounted)  
-✅ Shopping Cart with Increment/Decrement  
-✅ Checkout Page  
-✅ Loading & Error States  
-✅ Responsive UI  
-
----
-
-## 📦 Installation & Setup
+### 1️⃣ Clone the Repository
 
 ```bash
-# Clone the repository
-git clone https://github.com/your-username/shoppy-globe.git
+git clone https://github.com/ashreekar/Shoppy-Globe.git
 cd shoppy-globe
+```
 
-# Install dependencies
+### 2️⃣ Install Dependencies
+
+```bash
 npm install
+```
 
-# Start development server
+### 3️⃣ Run the Application
+
+```bash
 npm run dev
-````
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ---
 
-## 🛠️ Available Scripts
+## 🎨 Styling
 
-| Command           | Description              |
-| ----------------- | ------------------------ |
-| `npm run dev`     | Start development server |
-| `npm run build`   | Build for production     |
-| `npm run preview` | Preview production build |
-| `npm run lint`    | Run ESLint               |
+* Styled with **CSS / Tailwind** for a user-friendly interface.
 
 ---
 
-## 🤝 Contributing
+## 📜 Assignment Requirements Covered
 
-Contributions, issues, and feature requests are welcome!
-Feel free to open a PR or suggest improvements.
-
----
-
-## ✨ Author
-
-**Ashreek (DeVostro)**
-📧 Email: *[ashreekar767@gmail.com](mailto:ashreekar767@gmail.com)*
-
----
+✔️ React app created with **Vite**
+✔️ Components: App, Products, ProductItem, Cart, CartItem, NotFound, Header.
+✔️ State management using redux implemented
+✔️ Used props for passing data from parent to child component
+✔️ Added dynamic routing for product details
+✔️ Event handling and error message
+✔️ Added search bar for searching by product name
+✔️ Added error page 404 not found page
+✔️ Styled for better user experience
+✔️ README with setup instructions

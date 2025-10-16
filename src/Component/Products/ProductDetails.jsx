@@ -22,9 +22,18 @@ function ProductDetails() {
   return (
     <div className="flex flex-col lg:flex-row gap-10 w-full justify-evenly items-center min-h-[80vh] px-8 py-10 bg-gray-50 rounded-lg shadow-xl">
       <div className="flex justify-center items-center bg-white rounded-2xl shadow-lg border border-gray-100 p-4 w-[300px] h-[300px]">
-        <img src={data.images[0]} alt={data.title} onError={(e) => {
+        {/* <img src={data.images[0]} alt={data.title} onError={(e) => {
           e.target.src = "/logo.png"
-        }} height="250px" width="250px" className="h-full object-fit rounded-t-xl" />
+        }} height="250px" width="250px" className="h-full object-fit rounded-t-xl" /> */}
+
+        <LazyLoadImage
+        height="250px" width="250px"
+                    alt={data.title}
+                    className="h-full object-fit rounded-t-xl"
+                    src={data.images[0]}
+                    onError={(e) => {
+                      e.target.src = "/logo.png"
+                    }} />
       </div>
 
       <div className="flex flex-col gap-3 w-[45vw]">

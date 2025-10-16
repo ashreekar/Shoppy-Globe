@@ -20,6 +20,7 @@ function ProductCard({ product, aspect }) {
                     alt={product.title}
                     onError={(e) => { e.target.src = "/logo.png" }}
                     className="h-[100px] w-auto object-cover rounded-md"
+                    loading="lazy"
                 />
 
                 <h3 className="text-sm font-semibold text-center mt-1">{product.title}</h3>

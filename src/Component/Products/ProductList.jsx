@@ -1,4 +1,7 @@
 import ProductItem from "./ProductItem"
+import { lazy } from "react"
+
+const ProductItem=lazy(()=>import("./ProductItem.jsx"))
 
 function ProductList({ renderProducts }) {
   // console.log(renderProducts)

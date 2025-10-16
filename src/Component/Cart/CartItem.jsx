@@ -37,7 +37,7 @@ function CartItem({ product }) {
       <div className='w-full md:w-1/3 items-center flex justify-center'>
         <img src={product.thumbnail} alt={product.title} onError={(e) => {
           e.target.src = "/logo.png"
-        }} className='h-40 w-40 object-contain rounded-xl bg-gray-50 p-2 border border-gray-100' />
+        }} className='h-40 w-40 object-contain rounded-xl bg-gray-50 p-2 border border-gray-100' loading="lazy" />
       </div>
       <div className="flex flex-col flex-1 justify-between w-full">
         <h3 className="text-2xl font-semibold text-gray-800 mb-2">{product.title}</h3>
