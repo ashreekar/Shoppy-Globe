@@ -4,10 +4,13 @@ import { useEffect, useState } from "react";
 import { emptyCart } from "../../stateUtils/cartSlice";
 
 function CheckoutPage() {
+  // subscribing to cart for cost and actual cart array of items
   const cart = useSelector(state => state.cart.cart);
   const cost = useSelector(state => state.cart.cost);
+  // dispatch using for clearing cart
   const dispatch = useDispatch();
 
+  // states used to control form
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [adress, setAdress] = useState("");
@@ -17,16 +20,36 @@ function CheckoutPage() {
   const [state, setState] = useState("");
   const [method, setMethod] = useState("cod");
 
+  // state used to control validation
   const [warn, setWarn] = useState(false);
   const [sucess, setSucess] = useState(false);
   const [reasonRejction, setreasonRejction] = useState("")
 
+  // function runs on click of checkout button
   const checkoutHandler = () => {
     const fields = { name, email, adress, phone, pin, city, state, method };
+    // form validation is being done
     const emptyField = Object.keys(fields).find(key => !fields[key]?.trim());
+    const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const isValidPhone = (phone) => /^\d{10}$/.test(phone);
 
+// cheaks for empty fileds to set warnign state
     if (emptyField) {
       setreasonRejction(emptyField);
+      setWarn(true);
+      return;
+    }
+
+    // Email validation
+    if (!isValidEmail(email)) {
+      setreasonRejction("email");
+      setWarn(true);
+      return;
+    }
+
+    // Phone validation
+    if (!isValidPhone(phone)) {
+      setreasonRejction("phone");
       setWarn(true);
       return;
     }
@@ -47,7 +70,13 @@ function CheckoutPage() {
       method
     }
 
+    // setting values in loacstorage
     localStorage.setItem("formData", JSON.stringify(formData));
+
+    // cleanup function to clear local storage
+    return ()=>{
+      localStorage.removeItem("formData")
+    }
   }, [name, email, adress, phone, pin, city, state, method]);
 
   useEffect(() => {
@@ -114,7 +143,7 @@ function CheckoutPage() {
                 required
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                type="text"
+                type="number"
                 name="phone"
                 placeholder="Phone Number"
                 className="p-2 border rounded-lg w-full focus:ring focus:ring-blue-200"
@@ -152,7 +181,7 @@ function CheckoutPage() {
                   required
                   value={pin}
                   onChange={(e) => setPin(e.target.value)}
-                  type="text"
+                  type="number"
                   name="pincode"
                   placeholder="Pincode"
                   className="p-2 border rounded-lg w-full focus:ring focus:ring-blue-200"

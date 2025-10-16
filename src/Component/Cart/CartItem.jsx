@@ -6,9 +6,11 @@ import { addByOne, removeByOne, removeCompletly } from "../../stateUtils/cartSli
 function CartItem({ product }) {
   const [quantity, setQuantity] = useState(0);
 
+  // showing item details in cart by subscribing to it
   const dispatch = useDispatch();
   const item = useSelector(state => state.cart.cart);
 
+  // sets the state of cart quantity of induvidual element
   useEffect(() => {
     const val = item.find((val) => {
       return val.id === product.id;
@@ -17,14 +19,17 @@ function CartItem({ product }) {
     setQuantity(val?.cartQuantity || 0);
   }, [product, item])
 
+  // method handles one element adding
   const addOneCart = () => {
     dispatch(addByOne(product));
   }
 
+  // method handles complete removal
   const removeProduct = () => {
     dispatch(removeCompletly(product));
   }
 
+  // method handles single item removal
   const deleteOneCart = () => {
     if (quantity === 1) {
       dispatch(removeCompletly(product));
@@ -45,6 +50,7 @@ function CartItem({ product }) {
         <div className='flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-gray-700'>
           <p className='text-lg text-gray-500 font-medium'>Price:<span className="text-gray-900 font-semibold">$ {product.actualPrice}</span></p>
           <p className='text-lg'>
+            {/* Calcualting the toal cost to pay after discuont and total quantity */}
             <span className="text-black font-bold">To pay: {(product.cartQuantity * product.actualPrice).toFixed(2)}</span>
             {" "}
             <span className="text-sm text-gray-500 ml-1"> for {product.cartQuantity} pieces</span>

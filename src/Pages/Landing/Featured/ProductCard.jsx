@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
+// aspect is here to split between discount and rated component
 function ProductCard({ product, aspect }) {
     return (
         <div className="flex flex-col w-[150px] sm:w-[180px] lg:w-[200px] rounded-lg shadow hover:shadow-lg transition p-2 bg-white">
@@ -15,16 +17,24 @@ function ProductCard({ product, aspect }) {
                         <span className="font-semibold">{product.rating}</span>
                     </div>)
                 }
-                <img
+                {/* <img
                     src={product.thumbnail}
                     alt={product.title}
                     onError={(e) => { e.target.src = "/logo.png" }}
                     className="h-[100px] w-auto object-cover rounded-md"
                     loading="lazy"
+                /> */}
+                {/* Used lazy load image componetn for better loading of images */}
+
+                <LazyLoadImage
+                src={product.thumbnail}
+                    alt={product.title}
+                    onError={(e) => { e.target.src = "/logo.png" }}
+                    className="h-[100px] w-auto object-cover rounded-md"
                 />
 
                 <h3 className="text-sm font-semibold text-center mt-1">{product.title}</h3>
-
+{/* Caluclating and showing discounted percentage */}
                 <div className="text-xs flex items-center justify-between w-full mt-1">
                     <p className="font-bold">${(product.price * (1 - product.discountPercentage / 100)).toFixed(2)}</p>
                     <p className="text-gray-400 line-through">{product.price.toFixed(2)}</p>

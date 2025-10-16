@@ -4,13 +4,17 @@ import ErrorFetch from "../LoadAndError/ErrorFetch"
 import Loading from "../LoadAndError/Loading"
 import { FaStar } from "react-icons/fa";
 import ProductCartDetails from "./ProductCartDetails";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 function ProductDetails() {
+  // using useParams() from dynamic routing finding
   const param = useParams();
   const url = "https://dummyjson.com/products"
 
+  // fetching perticular product by calling api
   const { data, error, loading } = useFetch(`${url}/${param.productid}`);
 
+  // handling load and eror states
   if (loading) {
     return <Loading />
   }
@@ -26,23 +30,24 @@ function ProductDetails() {
           e.target.src = "/logo.png"
         }} height="250px" width="250px" className="h-full object-fit rounded-t-xl" /> */}
 
+        {/*  Implememting lazy laod images */}
         <LazyLoadImage
-        height="250px" width="250px"
-                    alt={data.title}
-                    className="h-full object-fit rounded-t-xl"
-                    src={data.images[0]}
-                    onError={(e) => {
-                      e.target.src = "/logo.png"
-                    }} />
+          height="250px" width="250px"
+          alt={data.title}
+          className="h-full object-contain rounded-t-xl"
+          src={data.images[0]}
+          onError={(e) => {
+            e.target.src = "/logo.png"
+          }} />
       </div>
 
       <div className="flex flex-col gap-3 w-[45vw]">
         <h2 className="font-bold text-2xl">{data.title}</h2>
-        <p className="text-gray-600 font-medium">from <span className="text-blue-700 font-medium">{data.brand}</span></p>
+        <p className="text-gray-600 font-medium">from <span className="text-blue-700 font-medium">{data.brand || data.title}</span></p>
 
         <div className="flex flex-wrap gap-2 mt-2">
           {
-            data.tags.map((tag, idex) => {
+            data.tags?.map((tag, idex) => {
               return (
                 <p className="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full border border-blue-300" key={tag}>
                   {tag}
@@ -52,13 +57,13 @@ function ProductDetails() {
           }
         </div>
 
-        <div className={`${data.rating >= 4 ? "bg-green-600" : data.rating >= 3 ? "bg-orange-500" : "bg-red-500"} flex items-center gap-1 px-2 py-1 rounded-sm w-fit`}>
+        <div className={`${data?.rating >= 4 ? "bg-green-600" : data.rating >= 3 ? "bg-orange-500" : "bg-red-500"} flex items-center gap-1 px-2 py-1 rounded-sm w-fit`}>
           <FaStar className="text-white text-xs" />
           <span className="text-white text-sm font-medium">{data.rating}</span>
         </div>
 
         <div className='text-lg font-medium flex text-center flex-row items-center gap-4 mt-2'>
-          <p className="text-2xl font-semibold text-gray-900">$ {(data.price*(1-(data.discountPercentage/100))).toFixed(2)}</p>
+          <p className="text-2xl font-semibold text-gray-900">$ {(data.price * (1 - (data.discountPercentage / 100))).toFixed(2)}</p>
           <p className="text-gray-400 line-through text-lg">
             ${(data.price).toFixed(2)}
           </p>
@@ -67,12 +72,12 @@ function ProductDetails() {
           </p>
         </div>
         <div>
-
+          {/* Adding the description in bullet poins*/}
           <div>
             <h3 className="font-bold text-lg">Description:</h3>
             <ul className="list-disc pl-6 text-gray-700 leading-relaxed">
               {
-                data.description.split(".").filter((sent) => sent.trim().length > 0).map((sent) => {
+                data.description?.split(".")?.filter((sent) => sent.trim().length > 0).map((sent) => {
                   return (
                     <li key={sent}>{sent}</li>
                   )

@@ -6,7 +6,7 @@ import cartReducer from "./cartSlice.js"
 
  const loadState = () => {
     // loading the loadstore on start state
-    const storedState = localStorage.getItem('reduxState');
+    const storedState = localStorage.getItem('reduxStatestore');
     if (storedState === null) return undefined; 
     return JSON.parse(storedState);
 };
@@ -14,11 +14,11 @@ import cartReducer from "./cartSlice.js"
 // save store to save after every update(action dispatch)
  const saveState = (state) => {
     const storedState = JSON.stringify(state);
-    localStorage.setItem('reduxState', storedState);
+    localStorage.setItem('reduxStatestore', storedState);
 };
 
 const persistedState=loadState();
-
+// have 2 reducers cart,product
 const shopStore=configureStore({
     reducer:{
         cart:cartReducer,
@@ -27,6 +27,7 @@ const shopStore=configureStore({
     preloadedState:persistedState,
 })
 
+// runs to fill initial state on refresh
 shopStore.subscribe(() => {
   saveState(shopStore.getState()); 
 })

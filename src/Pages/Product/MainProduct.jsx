@@ -12,17 +12,19 @@ const ErrorFetch=lazy(()=>import("../../Component/LoadAndError/ErrorFetch.jsx"))
 function MainProduct() {
     const url = "https://dummyjson.com/products";
     const { data, error, loading, notFound=false } = useFetch(url);
-    console.log(data)
 
+    // subscribing to cart slice because need to show total cart cost
     const cost=useSelector(state=>state.cart.cost);
 
     const [renderProducts, setRenderProducts] = useState(data);
 
+    // sets the product in product store for first time
     const dispatch = useDispatch();
 
     useEffect(() => {
         // data is in my store as ProductSlice to use select in searchbar
         if (data?.products) {
+                // sets the product in product store for first time and sets for render
             setRenderProducts(data.products);
             dispatch(addProduct(data.products));
         } else {
@@ -32,6 +34,7 @@ function MainProduct() {
     }, [data])
 
     function renderingDataChanges(val){
+        // function that sets rendering data on search
         if(val===""){
             setRenderProducts(data?.products || []);
         }else if(val.length===0){
@@ -44,6 +47,8 @@ function MainProduct() {
 
     // NOTE : No need of cart data as it is only need in 
     //        incrementdecrement counter not in productitem
+
+    // rendering exceptions and eror and loading states
 
     if (loading) {
         return <Loading />

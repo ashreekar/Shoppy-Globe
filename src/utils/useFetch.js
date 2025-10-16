@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react"
 
 const useFetch = (url) => {
+    // setting up data,load and err states for updation on call of useEffect
     const [data, setdata] = useState(null);
     const [error, seterror] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        let isMounted=true;
+        let isMounted=true;  // for better peofrmence by eleminating the previous ongoing call
         async function callApi() {
             try {
                 setLoading(true);
@@ -28,12 +29,13 @@ const useFetch = (url) => {
         }
 
         callApi();
-
+// cleanup functioon to abort ongoing api call on component unmount
         return ()=>{
             isMounted=false;
         }
     }, [url]);
 
+    // returning data,error,loading
     return { data, error, loading };
 }
 

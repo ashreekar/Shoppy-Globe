@@ -2,10 +2,12 @@ import { useState,useEffect } from "react";
 import ProductCard from "./ProductCard";
 
 function TopRated({data}) {
+  // componet shows top rated items on landing page
 const [rated, setRated] = useState([]);
 
   useEffect(() => {
       if (data) {
+        // sorts based on rating
         let val = [...data].sort((first, second) => {
           return second.rating - first.rating;
         })

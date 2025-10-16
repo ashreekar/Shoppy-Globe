@@ -1,6 +1,7 @@
 import { FaArrowAltCircleDown } from "react-icons/fa"
 import { NavLink } from "react-router-dom"
 
+// page for 404 error showing
 function NotFound() {
     return (
         <div className="flex flex-col gap-6 items-center justify-center mt-14">

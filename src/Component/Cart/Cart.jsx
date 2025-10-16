@@ -4,21 +4,26 @@ import { NavLink } from 'react-router-dom';
 import { emptyCart } from '../../stateUtils/cartSlice.js';
 import { useEffect, useState } from 'react';
 
+// main component of cart
 function Cart() {
   const dispatch = useDispatch();
+  // subscribing tocart to show cart details
   const cartFetched = useSelector(state => state.cart.cart);
   const cost = useSelector(state => state.cart.cost);
 
+  // managing with a local state
   const [cart, setCart] = useState(cartFetched);
 
   useEffect(() => {
     setCart(cartFetched);
   }, [cartFetched, cost])
 
+  // function called on remove cart
   const removeCart = () => {
     dispatch(emptyCart(cart));
   }
 
+  // if cart is empty say it is empty
   if (cart.length === 0) {
     return (
       <div className="flex flex-col items-center gap-4 justify-center h-[70vh]">
@@ -30,6 +35,7 @@ function Cart() {
     )
   }
 
+  // rendering cart
   return (
     <div className='flex flex-col lg:flex-row w-full justify-evenly gap-8 mt-10 px-4'>
       <div className='flex flex-col gap-6 items-center w-full lg:min-w-[55vw] bg-white rounded-2xl shadow-md p-4 border border-gray-100'>

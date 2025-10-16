@@ -1,6 +1,9 @@
 import { FaPlus, FaMinus, } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
+// This is a special counter componet which displays button to add to car
+// diplay count on adding and deleting form cart by subscribing to it
+// handles the increment and decrement functionality easily
 function IncreDecreCounter({ quantity, deleteOneCart, addOneCart,view, buyview }) {
   return (
     <div className={`flex items-center w-auto justify-evenly gap-2 py-2.5 px-5 me-2 mb-2 mt-1 ${quantity === 0 ? "hidden" : "flex"} ${view?"flex-col":""}`}>

@@ -5,12 +5,14 @@ function SearchBar({ renderingDataChanges }) {
   const products = useSelector(state => state.product.products);
   const [searchValue, setsearchValue] = useState("");
 
+  // on hit of search it calls the prop fucntion with value
   function searchAndReturnProducts() {
-    console.log(searchValue)
+    // console.log(searchValue)
+    //filters data only needs to be rendered
     const toSet = products.filter((item) => {
-      return item.title.includes(searchValue);
+      return item.title.toLowerCase().includes(searchValue.toLowerCase());
     })
-    console.log(toSet)
+    // console.log(toSet)
     renderingDataChanges(toSet);
   }
 

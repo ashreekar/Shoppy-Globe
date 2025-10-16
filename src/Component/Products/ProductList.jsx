@@ -1,4 +1,4 @@
-import ProductItem from "./ProductItem"
+// import ProductItem from "./ProductItem"
 import { lazy } from "react"
 
 const ProductItem=lazy(()=>import("./ProductItem.jsx"))
@@ -8,6 +8,7 @@ function ProductList({ renderProducts }) {
   return (
     <div className='flex flex-wrap gap-6 items-center justify-center mt-10 pl-10 pr-10'>
       {
+        // Rendering all product item card using map
         renderProducts.map((product) => {
           return (
             <ProductItem key={product.id} product={product} />

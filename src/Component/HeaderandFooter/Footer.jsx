@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
 
+// my footer component of project
 function Footer() {
   return (
     <footer className="w-full bg-gray-50 text-gray-700 py-10 px-4 mt-12 border-t border-gray-200 flex flex-col items-center gap-4">

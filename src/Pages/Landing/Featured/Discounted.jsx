@@ -2,10 +2,12 @@ import { useEffect, useState } from "react"
 import ProductCard from "./ProductCard";
 
 function Discounted({ data }) {
+  // componet shows discounted uetms on landing page
   const [discounted, setDiscounted] = useState([]);
 
   useEffect(() => {
     if (data) {
+      // searches for top discounted
       let val = [...data].sort((first, second) => {
         return second.discountPercentage - first.discountPercentage;
       })
@@ -20,6 +22,7 @@ function Discounted({ data }) {
       <div className="mt-2 flex flex-wrap gap-4">
 
         {
+          // only gives top 5 discounted
           discounted.filter((item, index) => index < 5).map((item) => {
             return <ProductCard key={item.id} product={item} aspect={"discount"} />
           })
