@@ -9,7 +9,7 @@ function Discounted({ data }) {
     if (data) {
       // searches for top discounted
       let val = [...data].sort((first, second) => {
-        return second.discountPercentage - first.discountPercentage;
+        return Number(second.discountPercentage) - Number(first.discountPercentage);
       })
 
       setDiscounted(val);
@@ -24,7 +24,7 @@ function Discounted({ data }) {
         {
           // only gives top 5 discounted
           discounted.filter((item, index) => index < 5).map((item) => {
-            return <ProductCard key={item.id} product={item} aspect={"discount"} />
+            return <ProductCard key={item._id} product={item} aspect={"discount"} />
           })
         }
       </div>

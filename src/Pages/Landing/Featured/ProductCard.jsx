@@ -6,7 +6,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 function ProductCard({ product, aspect }) {
     return (
         <div className="flex flex-col w-[150px] sm:w-[180px] lg:w-[200px] rounded-lg shadow hover:shadow-lg transition p-2 bg-white">
-            <NavLink to={`../products/${product.id}`} className="flex flex-col items-center">
+            <NavLink to={`../products/${product._id}`} className="flex flex-col items-center">
                 {
                     aspect === "discount" ? (
                         <p className="text-green-600 font-medium text-lg mb-4">
@@ -36,8 +36,8 @@ function ProductCard({ product, aspect }) {
                 <h3 className="text-sm font-semibold text-center mt-1">{product.title}</h3>
 {/* Caluclating and showing discounted percentage */}
                 <div className="text-xs flex items-center justify-between w-full mt-1">
-                    <p className="font-bold">${(product.price * (1 - product.discountPercentage / 100)).toFixed(2)}</p>
-                    <p className="text-gray-400 line-through">{product.price.toFixed(2)}</p>
+                    <p className="font-bold">${(Number(product.price) * (1 - Number(product.discountPercentage) / 100)).toFixed(2)}</p>
+                    <p className="text-gray-400 line-through">{Number(product.price).toFixed(2)}</p>
                 </div>
             </NavLink>
         </div>

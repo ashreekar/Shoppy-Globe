@@ -19,7 +19,7 @@ function ProductItem({ product }) {
   // matchign the product in cart form to prop to get the product quantity
   useEffect(() => {
     const val = item.find((val) => {
-      return val.id === product.id;
+      return val._id === product._id;
     })
 
     setQuantity(val?.cartQuantity || 0);
@@ -68,8 +68,8 @@ function ProductItem({ product }) {
         </div>
         {/* Showing the discounted rate also */}
         <div className='text-lg font-medium flex text-center flex-row items-center justify-between gap-4 mt-2'>
-          <p className='text-black text-xl'>$ {(product.price * (1 - (product.discountPercentage / 100))).toFixed(2)}</p>
-          <p className='text-gray-500 line-through text-medium'>{(product.price).toFixed(2)}</p>
+          <p className='text-black text-xl'>₹ {(product.price * (1 - (product.discountPercentage / 100))).toFixed(2)}</p>
+          <p className='text-gray-500 line-through text-medium'>{(Number(product.price)).toFixed(2)}</p>
         </div>
       </NavLink>
       <div className='flex justify-between'>

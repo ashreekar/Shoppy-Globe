@@ -9,7 +9,7 @@ const [rated, setRated] = useState([]);
       if (data) {
         // sorts based on rating
         let val = [...data].sort((first, second) => {
-          return second.rating - first.rating;
+          return Number(second.rating) - Number(first.rating);
         })
   
         setRated(val);
@@ -22,7 +22,7 @@ const [rated, setRated] = useState([]);
 
         {
           rated.filter((item, index) => index < 5).map((item) => {
-            return <ProductCard key={item.id} product={item} aspect={"rating"} />
+            return <ProductCard key={item._id} product={item} aspect={"rating"} />
           })
         }
       </div>

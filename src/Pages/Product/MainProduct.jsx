@@ -8,9 +8,10 @@ import { addProduct } from "../../stateUtils/productSlice.js";
 import NotFound from "../../Component/404/NotFound.jsx"
 
 const ErrorFetch=lazy(()=>import("../../Component/LoadAndError/ErrorFetch.jsx"));
+import { apiurl } from "../../utils/apiurl.js";
 
 function MainProduct() {
-    const url = "https://dummyjson.com/products";
+    const url = `${apiurl}/products/`;
     const { data, error, loading, notFound=false } = useFetch(url);
 
     // subscribing to cart slice because need to show total cart cost
@@ -23,10 +24,10 @@ function MainProduct() {
 
     useEffect(() => {
         // data is in my store as ProductSlice to use select in searchbar
-        if (data?.products) {
+        if (data?.data) {
                 // sets the product in product store for first time and sets for render
-            setRenderProducts(data.products);
-            dispatch(addProduct(data.products));
+            setRenderProducts(data.data);
+            dispatch(addProduct(data.data));
         } else {
             setRenderProducts([]);
             dispatch(addProduct([]));
@@ -36,7 +37,7 @@ function MainProduct() {
     function renderingDataChanges(val){
         // function that sets rendering data on search
         if(val===""){
-            setRenderProducts(data?.products || []);
+            setRenderProducts(data?.data || []);
         }else if(val.length===0){
             setRenderProducts([]);
         }
@@ -70,7 +71,9 @@ function MainProduct() {
                 <p className='text-md text-gray-700 mt-2 pr-10'>Your total cart cost: <span className='font-bold'>{cost.toFixed(2)}</span> </p>
             </div>
             {
-                renderProducts.length===0?<div className="h-[70vh] flex items-center justify-center"><p className="text-2xl font-bold text-gray-700">Product you are looking for is not found</p></div>:<ProductList renderProducts={renderProducts} />
+                renderProducts.length===0
+                ?<div className="h-[70vh] flex items-center justify-center"><p className="text-2xl font-bold text-gray-700">Product you are looking for is not found</p></div>
+                :<ProductList renderProducts={renderProducts} />
             }
         </>
     )

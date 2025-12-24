@@ -11,7 +11,7 @@ function ProductList({ renderProducts }) {
         // Rendering all product item card using map
         renderProducts.map((product) => {
           return (
-            <ProductItem key={product.id} product={product} />
+            <ProductItem key={product._id} product={product} />
           )
         })
       }

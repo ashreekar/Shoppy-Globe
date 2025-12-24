@@ -3,9 +3,10 @@ import { FaArrowRight } from 'react-icons/fa'
 import Discounted from './Featured/Discounted';
 import TopRated from './Featured/TopRated';
 import { useFetch } from "../../utils/useFetch.js"
+import { apiurl } from '../../utils/apiurl.js';
 
 function LandigPage() {
-  const { data, error, loading } = useFetch("https://dummyjson.com/products");
+  const { data, error, loading } = useFetch(`${apiurl}/products`);
 
   return (
     <div className='min-h-screen flex flex-col items-center p-4 relative'>
@@ -24,8 +25,8 @@ function LandigPage() {
       </div>
 {
   !(loading || error) && <div className={'flex flex-col mt-7 items-center w-[100%]'}>
-        <Discounted data={data.products} />
-        <TopRated data={data.products} />
+        <Discounted data={data.data} />
+        <TopRated data={data.data} />
       </div>
 }
 
