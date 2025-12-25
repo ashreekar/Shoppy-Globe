@@ -46,7 +46,7 @@ function ProductItem({ product }) {
 
   return (
     <div className='flex flex-col h-100 w-[75vw] sm:w-[40vw] lg:w-[25vw] rounded-xl border-2 shadow-md border-white hover:border-blue-500 transition duration-150 items-center'>
-      <NavLink to={`../products/${product.id}`} className="w-[100%] flex flex-col items-center h-80">
+      <NavLink to={`../products/${product._id}`} className="w-[100%] flex flex-col items-center h-80">
         <div className='h-[50%] w-[90%] flex justify-center'>
           {/* <img src={product.thumbnail} alt={product.title} onError={(e) => {
             e.target.src = "/logo.png"
